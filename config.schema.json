@@ -1,15 +1,57 @@
 {
-  "pluginAlias": "ExampleHomebridgePlugin",
+  "pluginAlias": "InfluxDBTemperatureHumidity",
   "pluginType": "platform",
   "singular": true,
   "schema": {
     "type": "object",
     "properties": {
-      "name": {
-        "title": "Name",
-        "type": "string",
-        "required": true,
-        "default": "Example Dynamic Platform"
+      "influx": {
+        "type": "object",
+        "title": "InfluxDB Configuration",
+        "properties": {
+
+          "host": {
+            "type": "string",
+            "title": "InfluxDB server address",
+            "format": "hostname",
+            "placeholder": "127.0.0.1",
+            "description": "Hostname or IP address of the InfluxDB server."
+          },
+
+          "database": {
+            "type": "string",
+            "title": "Database name",
+            "placeholder": "mydb",
+            "description": "Name of the database that stores measurements of the sensors."
+          },
+
+          "measurement": {
+            "type": "string",
+            "title": "Measurement (table) name",
+            "placeholder": "tempMeasurement",
+            "description": "Name of the measurements table."
+          },
+
+          "tag": {
+            "type": "string",
+            "title": "Tag key",
+            "placeholder": "Sensorname",
+            "description": "Tag key used to distinguish between different sensors (tag values)."
+          },
+
+          "keyTemperature": {
+            "type": "string",
+            "title": "Field key for temperature",
+            "placeholder": "temperature"
+          },
+
+          "keyHumidity": {
+            "type": "string",
+            "title": "Field key for humidity",
+            "placeholder": "humidity"
+          }
+
+        }
       }
     }
   }
